@@ -1,4 +1,5 @@
 Feature: US1004 Steplerde Parametre Kullanilabilmeli
+
   Scenario:TC08 Amazon Nutella Testi
     Given Kullanici "amazonUrl" anasayfaya gider
     When "Nutella" icin arama yapar
