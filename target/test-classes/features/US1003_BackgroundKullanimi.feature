@@ -1,21 +1,20 @@
-Feature: 1001_Cucumber Amazon Search Test
-
-  Scenario:TC01 Amazon Nutella Testi
+Feature: US1003 Background Kullanarak Tekrarlardan Kurtulur
+  Background: Amazon Anasayfaya Gitme
     Given Kullanici amazon anasayfaya gider
+
+  Scenario:TC05 Amazon Nutella Testi
     When Nutella icin arama yapar
     Then Arama sonuclarinin Nutella icerdigini test eder
     And Sayfayi kapatir
 
 
-  Scenario:TC01 Amazon Java Testi
-    Given Kullanici amazon anasayfaya gider
+  Scenario:TC06 Amazon Java Testi
     When Java icin arama yapar
     Then Arama sonuclarinin Java icerdigini test eder
     And Sayfayi kapatir
 
 
-  Scenario:TC01 Amazon Samsung Testi
-    Given Kullanici amazon anasayfaya gider
+  Scenario:TC07 Amazon Samsung Testi
     When Samsung icin arama yapar
     Then Arama sonuclarinin Samsung icerdigini test eder
     And Sayfayi kapatir
