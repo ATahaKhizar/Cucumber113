@@ -4,11 +4,14 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.hc.core5.http.TruncatedChunkException;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import pages.AmazonPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+
+import java.time.Duration;
 
 public class AmazonStepDefinitions {
     AmazonPage amazonPage = new AmazonPage();
@@ -65,5 +68,35 @@ public class AmazonStepDefinitions {
         String actualTitle = Driver.getDriver().getTitle();
         String expectedIcerik ="Amazon";
         Assert.assertTrue(actualTitle.contains(expectedIcerik));
+    }
+
+    @Given("Kullanici {string} anasayfaya gider")
+    public void kullaniciAnasayfayaGider(String istenenUrl) {//amazonUrl , wiseUrl , facebookUrl
+        Driver.getDriver().get(ConfigReader.getProperty(istenenUrl));
+
+    }
+
+    @When("{string} icin arama yapar")
+    public void icinAramaYapar(String aranacakKelime) {
+        amazonPage.aramaKutusu.sendKeys(aranacakKelime+ Keys.ENTER);
+    }
+
+    @Then("Arama sonuclarinin {string} icerdigini test eder")
+    public void aramaSonuclarininIcerdiginiTestEder(String expectedIcerik) {
+        String actualAramaSonucu =amazonPage.aramaSonucuElementi.getText();
+        Assert.assertTrue(actualAramaSonucu.contains(expectedIcerik));
+
+    }
+
+    @And("{int} Saniye Bekler")
+    public void saniyeBekler(int beklemeSuresi) throws InterruptedException {
+        //cucumber sayi yazildiginda direk parametre olarak kabul eder
+        try {
+            Thread.sleep(1000);
+        }catch (InterruptedException e){
+
+        }
+
+
     }
 }
